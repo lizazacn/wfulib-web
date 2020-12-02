@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <div>用户名：</div>
+    <div><input id="username" name="username" type="name" value=""></div>
+    <div>密  码：</div>
+    <div><input id="password" name="password" type="password" value=""></div>
+    <div>验证码：</div>
+    <div>
+        <input id="captcha" name="captcha" type="name" value="">
+        <img src="http://210.44.64.139/seat/captcha.php">
+    </div>
+    <div>时  间：</div>
+    <div><input id="order_date" name="order_date" type="name" value=""></div>
+    <div>座  号：</div>
+    <div><input id="seat_id" name="seat_id" type="name" value=""></div>
+    <br>
+    <div><input id="create" type="button" value="启动"></div>
+    <br>
+    <div><input id="stop" type="button" value="停止／关闭"></div>
+    <br>
+</div>
+<iframe id="iframe1" name="iframe1" src="">
+
+</iframe>
+<iframe name="iframe2" id="iframe2" src="">
+
+</iframe>
+<iframe name="iframe3" id="iframe3" src="">
+
+</iframe>
+<iframe name="iframe4" id="iframe4" src="">
+
+</iframe>
+<iframe name="iframe5" id="iframe5" src="">
+
+</iframe>
+<iframe name="iframe6" id="iframe6" src="">
+
+</iframe>
+<script type="text/javascript">
+    var login_status = false;
+    var f_status = false;
+    window.onload = function(){
+        $("#create").click(function(){
+            /**
+            * User Login!
+             */
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var captcha = document.getElementById("captcha").value;
+            document.getElementById("iframe1").src = "Test1.html?username="+username+"&password="+password+"&captcha"=captcha;
+            /**
+             * Add order data!
+             */
+            window.setTimeout(function (){
+                login_status = true;
+                reload_page();
+            }, 5000);
+        });
+        var reload_page = function(){
+            var frames = document.getElementsByTagName("iframe");
+            var order_date = document.getElementById("order_date").value;
+            var seat_id = document.getElementById("seat_id").value;
+            for(var i in frames){
+                // frames[i].style.display = "block";
+                frames[i].src="Test2.html?order_date="+order_date+"&seat_id="+seat_id;
+            }
+            if(f_status){
+                return false;
+            }
+            window.setTimeout(reload_page, 20000);
+        }
+        $("#stop").click(function(){
+            var frames = document.getElementsByTagName("iframe");
+            for(var i in frames){
+                // frames[i].style.display = "block";
+                f_status = true;
+                frames[i].src="Test2.html";
+            }
+        });
+    }
+</script>
+</body>
+</html>
