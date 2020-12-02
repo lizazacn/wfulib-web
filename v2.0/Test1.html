@@ -19,7 +19,8 @@
 	window.onload = function(){
 		var username = getQuerryString("username");
 		var password = getQuerryString("password");
-    var captcha = getQuerryString("captcha");
+                var captcha = getQuerryString("captcha");
+		alert(username);
 		document.getElementById("postdata[username]").value = username;
 		document.getElementById("postdata[password]").value = password;
     document.getElementById("postdata[captcha]").value = captcha;
