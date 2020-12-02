@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Login!</title>
+</head>
+<body>
+<form action="http://210.44.64.139/seat/seatOrderAction.php?action=addOrderSeat" target="_self" method="post">
+    <div>时  间：</div>
+    <div><input id="order_date" name="order_date" type="name" value=""></div>
+	<div>座  号：</div>
+	<div><input id="seat_id" name="seat_id" type="name" value=""></div>
+	<br>
+	<div><input id="submit2" type="submit" value="Submit!"></div>
+</form>
+<script type="text/javascript">
+	window.onload = function(){
+		var order_date = getQuerryString("order_data");
+		var seat_id = getQuerryString("seat_id");
+		document.getElementById("order_date").value = order_date;
+		document.getElementById("seat_id").value = seat_id;
+		window.setTimeout(function (){
+			document.getElementById("submit2").click();
+		}, 1000);
+
+	}
+	var getQuerryString = function(name){
+		var reg = new RegExp("^|&"+name+"=([^&]*)(&|$)", "i");
+		var search_data = window.location.search.substr(1).match(reg);
+		if(search_data != null){
+			return unescape(search_data[2]);
+		}
+		return null;
+	}
+</script>
+</body>
+</html>
