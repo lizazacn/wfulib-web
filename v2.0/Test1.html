@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Login!</title>
+</head>
+<body>
+<form action="http://210.44.64.139/seat/seatOrderAction.php?action=normalLogin" target="_self" method="post">
+    <div>用户名：</div>
+    <div><input id="postdata[username]" name="postdata[username]" type="name" value=""></div>
+	<div>密  码：</div>
+	<div><input id="postdata[password]" name="postdata[password]" type="password" value=""></div>
+	<div>验证码：</div>
+	<div><input id="postdata[captcha]" name="postdata[captcha]" type="name" value=""></div>
+	<br>
+	<div><input id="submit1" type="submit" value="Submit!"></div>
+</form>
+<script type="text/javascript">
+	window.onload = function(){
+		var username = getQuerryString("username");
+		var password = getQuerryString("password");
+    var captcha = getQuerryString("captcha");
+		document.getElementById("postdata[username]").value = username;
+		document.getElementById("postdata[password]").value = password;
+    document.getElementById("postdata[captcha]").value = captcha;
+		window.setTimeout(function (){
+			document.getElementById("submit1").click();
+		}, 1000);
+
+	}
+	var getQuerryString = function(name){
+		var reg = new RegExp("^|&"+name+"=([^&]*)(&|$)", "i");
+		var search_data = window.location.search.substr(1).match(reg);
+		if(search_data != null){
+			return unescape(search_data[2]);
+		}
+		return null;
+	}
+</script>
+</body>
+</html>
