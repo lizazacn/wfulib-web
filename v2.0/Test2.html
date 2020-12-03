@@ -15,7 +15,7 @@
 </form>
 <script type="text/javascript">
 	window.onload = function(){
-		var order_date = getQuerryString("order_data");
+		var order_date = getCookieData("order_date");
 		var seat_id = getQuerryString("seat_id");
 		document.getElementById("order_date").value = order_date;
 		document.getElementById("seat_id").value = seat_id;
@@ -24,13 +24,12 @@
 		}, 1000);
 
 	}
+	/**
+	 * get value in url
+	 * @param name
+	 * @returns {string|boolean}
+	 */
 	var getQuerryString = function(name){
-		// var reg = new RegExp("^|&"+name+"=([^&]*)(&|$)", "i");
-		// var search_data = window.location.search.substr(1).match(reg);
-		// if(search_data != null){
-		// 	return unescape(search_data[2]);
-		// }
-		// return null;
 		var query = window.location.search.substring(1);
 		var vars = query.split("&");
 		for (var i=0;i<vars.length;i++) {
@@ -38,6 +37,20 @@
 			if(pair[0] == name){return pair[1];}
 		}
 		return(false);
+	}
+	/**
+	 * get value in cookie
+	 * @param name
+	 * @returns {string|boolean}
+	 */
+	var getCookieData = function(name){
+		var cookieData = document.cookie;
+		var str_list = cookieData.split(";");
+		for (var j = 0; j < str_list.length; j++){
+			var cookiestr = str_list[j].split("=");
+			if(cookiestr[0] == name){return cookiestr[1];}
+		}
+		return (false);
 	}
 </script>
 </body>
