@@ -71,7 +71,8 @@
             for(var i in frames){
                 // frames[i].style.display = "block";
                 if(i !== 0){
-                    frames[i].src="Test2.html?order_date="+order_date+"&seat_id="+seat_id;
+                    document.cookie = "order_date=" + order_date + "; path=/";
+                    frames[i].src="Test2.html?seat_id="+seat_id;
                 }
             }
             if(f_status){
