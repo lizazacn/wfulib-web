@@ -70,7 +70,9 @@
             var seat_id = document.getElementById("seat_id").value;
             for(var i in frames){
                 // frames[i].style.display = "block";
-                frames[i].src="Test2.html?order_date="+order_date+"&seat_id="+seat_id;
+                if(i !== 0){
+                    frames[i].src="Test2.html?order_date="+order_date+"&seat_id="+seat_id;
+                }
             }
             if(f_status){
                 return false;
