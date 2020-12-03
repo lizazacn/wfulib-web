@@ -10,8 +10,8 @@
     <div><input id="postdata[username]" name="postdata[username]" type="name" value=""></div>
 	<div>密  码：</div>
 	<div><input id="postdata[password]" name="postdata[password]" type="password" value=""></div>
-	<div>验证码：</div>
-	<!--<div><input id="postdata[captcha]" name="postdata[captcha]" type="name" value=""></div>-->
+	<div style="display: none">验证码：</div>
+	<div style="display: none"><input id="postdata[captcha]" name="postdata[captcha]" type="name" value=""></div>
 	<br>
 	<div><input id="submit1" type="submit" value="Submit!"></div>
 </form>
@@ -19,23 +19,22 @@
 	window.onload = function(){
 		var username = getQuerryString("username");
 		var password = getQuerryString("password");
-                var captcha = getQuerryString("captcha");
+        var captcha = getQuerryString("captcha");
 		alert(username);
 		document.getElementById("postdata[username]").value = username;
 		document.getElementById("postdata[password]").value = password;
-                // document.getElementById("postdata[captcha]").value = captcha;
+        document.getElementById("postdata[captcha]").value = captcha;
 		window.setTimeout(function (){
 			document.getElementById("submit1").click();
 		}, 1000);
 
 	}
+	/**
+	 * get value in url
+	 * @param name
+	 * @returns {string|boolean}
+	 */
 	var getQuerryString = function(name){
-		// var reg = new RegExp("^|&"+name+"=([^&]*)(&|$)", "i");
-		// var search_data = window.location.search.substr(1).match(reg);
-		// if(search_data != null){
-		// 	return unescape(search_data[2]);
-		// }
-		// return null;
 		var query = window.location.search.substring(1);
 		var vars = query.split("&");
 		for (var i=0;i<vars.length;i++) {
