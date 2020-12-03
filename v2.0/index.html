@@ -14,7 +14,7 @@
     <div>验证码：</div>
     <div>
         <input id="captcha" name="captcha" type="name" value="">
-        <img src="http://210.44.64.139/seat/captcha.php">
+		<img src="http://210.44.64.139/seat/captcha.php">
     </div>
     <div>时  间：</div>
     <div><input id="order_date" name="order_date" type="name" value=""></div>
@@ -62,7 +62,7 @@
             window.setTimeout(function (){
                 login_status = true;
                 reload_page();
-            }, 30000);
+            }, 10000);
         });
         var reload_page = function(){
             var frames = document.getElementsByTagName("iframe");
@@ -70,8 +70,9 @@
             var seat_id = document.getElementById("seat_id").value;
             for(var i in frames){
                 // frames[i].style.display = "block";
+				document.cookie
                 if(i !== 0){
-                    document.cookie = "order_date=" + order_date + "; path=/";
+				    document.cookie = "order_date=" + order_date  + ";path=/";
                     frames[i].src="Test2.html?seat_id="+seat_id;
                 }
             }
