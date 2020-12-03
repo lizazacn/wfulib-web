@@ -5,7 +5,7 @@
         在浏览器地址栏中输入：chrome://flags/
         将SameSite by default cookies和Cookies without SameSite must be secure修改为Disabled。
         然后点击Relaunch重启浏览器
-    demo:https://lizazacn.github.io/wfulib-wdb/v2.0
+   demo:<a href="https://lizazacn.github.io/wfulib-wdb/v2.0">DEMO</a>
 
 # 简介
 该脚本采用HTML+JavaScript+jQuery编写，可直接在浏览器中打开使用（该版本仅支持火狐浏览器），脚本通过form表单想服务器发送post请求，通过删除对图标、图片等数据的加载，降低对网速的需求。
